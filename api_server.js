@@ -28,9 +28,9 @@ server.use(restify.bodyParser({mapParams: false}));
 server.use(restify.gzipResponse());
 server.use(restify.authorizationParser());
 
-server.get({path: '/', version: '1.0.0'}, (req, res) => {
+server.get({path: '/nameservers_request', version: '1.0.0'}, (req, res) => {
     "use strict";
-    return res.json({hello: "tokenmail"})
+    res.json({Test})
 })
 
 server.get({path: '/tokens', version: '1.0.0'}, controllers.users.index);

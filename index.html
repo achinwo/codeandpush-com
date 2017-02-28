@@ -1,65 +1,127 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
+<!DOCTYPE html>
+<html ng-app='app'>
+<head>
+  <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='/app.css'>
+  <link rel="shortcut icon" href="http://res.cloudinary.com/codeandpush/image/upload/c_scale,w_16/v1488153175/cap-logo-nobg-notxt_kgcwft.png" type="image/png">
+  <link rel="icon" href="http://res.cloudinary.com/codeandpush/image/upload/c_scale,w_16/v1488153175/cap-logo-nobg-notxt_kgcwft.png" type="image/png">
+  <title>Code And Push</title>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="generator" content="Polymer Starter Kit">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <style type="text/css">
+    .x-wrapper {
+      height:400px;
+      width:400px;
+      position: relative;
+    }
+    .x-blur {
+      width:100%;
+      height:100%;
+      position: absolute;
+      background-image:url('http://www.chidi.com/images/canvas/abstract/trailsofdream.jpg');
+      background-size:cover;
+      -webkit-filter: blur(4px);
+      -moz-filter: blur(4px);
+      -ms-filter: blur(4px);
+      -o-filter: blur(4px);
+      filter: blur(4px);
+    }
+    .x-content{
+      position: absolute;
+      background-color:red;
+    }
+  </style>
+</head>
+<body ng-controller='ApplicationCtrl'>
+<nav class='navbar navbar-default'>
+  <div class='container'>
+    <ul class='nav navbar-nav'>
+      <li><a class='posts' href='https://www.secureserver.net/?ci=1905&prog_id=525354'>Shop</a></li>
+      <li><a class='posts' href='http://www.webdomainsellers.com'>Web Domain Sellers</a></li>
+    </ul>
 
-    <title>My App</title>
-    <meta name="description" content="My App description">
-
-    <link rel="icon" href="/images/favicon.ico">
-
-    <!-- See https://goo.gl/OOhYW5 -->
-    <link rel="manifest" href="/manifest.json">
-
-    <!-- See https://goo.gl/qRE0vM -->
-    <meta name="theme-color" content="#3f51b5">
-
-    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My App">
-
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="My App">
-
-    <!-- Homescreen icons -->
-    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
-
-    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#3f51b5">
-    <meta name="msapplication-tap-highlight" content="no">
+  </div>
+</nav>
+<br>
+<div class='container' ng-view>
 
 
-    <style>
-      body {
-        margin: 0;
-        font-family: 'Roboto', 'Noto', sans-serif;
-        line-height: 1.5;
-        min-height: 100vh;
-        background-color: #eeeeee;
-      }
-    </style>
-  </head>
-  <body>
-  <h3>Hello Folarin</h3>
-    <!-- Built with love using Polymer Starter Kit -->
-  </body>
+  <div class="alert alert-success alert-dismissible collapse" id="subSuccess" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span></button>
+    <p class="alert-link">Subscription successful!</p>
+  </div>
+
+</div>
+
+<br>
+<div class='container' ng-view>
+
+  <div class="jumbotron">
+    <img alt="Embedded Image" class="center" style="display: block;margin-left: auto;margin-right: auto;" src="/images/logo.png" />
+
+    <p>We are currently carrying out an overhaul of the system to meet high demand. If you would like to be notified as soon as we are back online, please subscribe to our mailing list below</p>
+    <div class="input-group">
+      <input type="email" id="sub-email" required onsubmit="subscribe();" class="form-control" placeholder="enter email...">
+      <span class="input-group-btn">
+            <button class="btn btn-default" id="sub-email-btn" onclick="subscribe();" type="button">Subscribe</button>
+            </span>
+    </div>
+  </div>
+
+</div>
+<!--<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js'></script>-->
+<!--<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-route.js'></script>-->
+<script src='/app.js'></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script>
+
+    $("#sub-email").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#sub-email-btn").click();
+        }
+    });
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAnAlcNguBpgZtuy3k_KYcc-1avsLmdsY4",
+        authDomain: "web-domain-sellers.firebaseapp.com",
+        databaseURL: "https://web-domain-sellers.firebaseio.com",
+        storageBucket: "web-domain-sellers.appspot.com",
+        messagingSenderId: "755621200065"
+    };
+    firebase.initializeApp(config);
+
+
+    function subscribe() {
+        var val = document.getElementById('sub-email').value.trim();
+        console.log("subscribed!", val);
+        if(val){
+            firebase.database().ref('subscriptions').push(val, function (error) {
+                if(error){
+                    console.error(error);
+                    $('#subSuccess').hide();
+                }else{
+                    console.log("success");
+                    $('#subSuccess').fadeIn();
+                    document.getElementById('sub-email').value = '';
+                }
+            })
+        }
+    }
+</script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-72864928-3', 'auto');
+    ga('send', 'pageview');
+
+</script>
+</body>
 </html>

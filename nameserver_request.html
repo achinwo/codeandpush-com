@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <title>CAP - Support</title>
+</head>
+
+
+    <style type="text/css">
+        .x-wrapper {
+            height:400px;
+            width:400px;
+            position: relative;
+        }
+        .x-blur {
+            width:100%;
+            height:100%;
+            position: absolute;
+            background-image:url('http://www.chidi.com/images/canvas/abstract/trailsofdream.jpg');
+            background-size:cover;
+            -webkit-filter: blur(4px);
+            -moz-filter: blur(4px);
+            -ms-filter: blur(4px);
+            -o-filter: blur(4px);
+            filter: blur(4px);
+        }
+        .x-content{
+            position: absolute;
+            background-color:red;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body ng-controller='ApplicationCtrl'>
+
+<div class="container">
+    <br>
+    <br>
+    <div class="row">
+        <form class="col-md-6 col-md-offset-3" action="https://formspree.io/anthony.chinwo@gmail.com"
+              method="POST">
+            <h3>Request Nameservers <small>Code&amp;Push Support</small></h3>
+
+            <input type="hidden" name="_cc" value="anthony@tokenmail.io" />
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">name</label>
+                <input type="text" name="name" class="form-control" placeholder="Your name">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" name="_replyto"  id="exampleInputEmail1" class="form-control" placeholder="Your email">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputDomain">Domain</label>
+                <input type="text" name="domain" id="exampleInputDomain" class="form-control" placeholder="What domain would like to onboard?">
+            </div>
+
+            <p class="muted">Note: Code&amp;Push is currently in Alpha. We will service requests on a case by case basis.</p>
+
+
+            <div class="col-sm-offset-2 col-sm-10 col-md-6 col-md-offset-3">
+                <button type="submit" class="btn btn-primary">Submit Nameserver Request</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+</body>
+</html>
