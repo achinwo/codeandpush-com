@@ -1,127 +1,940 @@
 <!DOCTYPE html>
-<html ng-app='app'>
-<head>
-  <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
-  <link rel='stylesheet' href='/app.css'>
-  <link rel="shortcut icon" href="http://res.cloudinary.com/codeandpush/image/upload/c_scale,w_16/v1488153175/cap-logo-nobg-notxt_kgcwft.png" type="image/png">
-  <link rel="icon" href="http://res.cloudinary.com/codeandpush/image/upload/c_scale,w_16/v1488153175/cap-logo-nobg-notxt_kgcwft.png" type="image/png">
-  <title>Code And Push</title>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Code&Push.com | Zero DevOps for Node.js</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        
+        <!-- Favicons -->
+        <link rel="shortcut icon" href="icon/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" href="icon/apple-touch-icon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icon/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="icon/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="icon/apple-touch-icon-114x114.png" />
+        
+        <!-- Google Fonts -->
+        <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,600,700,300' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        
+        <!-- Base Stylesheet -->
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" class="alt" href="css/theme-default.css">
+        
+    </head>
 
-  <style type="text/css">
-    .x-wrapper {
-      height:400px;
-      width:400px;
-      position: relative;
-    }
-    .x-blur {
-      width:100%;
-      height:100%;
-      position: absolute;
-      background-image:url('http://www.chidi.com/images/canvas/abstract/trailsofdream.jpg');
-      background-size:cover;
-      -webkit-filter: blur(4px);
-      -moz-filter: blur(4px);
-      -ms-filter: blur(4px);
-      -o-filter: blur(4px);
-      filter: blur(4px);
-    }
-    .x-content{
-      position: absolute;
-      background-color:red;
-    }
-  </style>
-</head>
-<body ng-controller='ApplicationCtrl'>
-<nav class='navbar navbar-default'>
-  <div class='container'>
-    <ul class='nav navbar-nav'>
-      <li><a class='posts' href='https://www.secureserver.net/?ci=1905&prog_id=525354'>Shop</a></li>
-      <li><a class='posts' href='https://help.codeandpush.com/articles/7098-getting-started'>Getting Started</a></li>
-    </ul>
-
-  </div>
-</nav>
-<br>
-<div class='container' ng-view>
-
-
-  <div class="alert alert-success alert-dismissible collapse" id="subSuccess" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span></button>
-    <p class="alert-link">Subscription successful!</p>
-  </div>
-
-</div>
-
-<br>
-<div class='container' ng-view>
-
-  <div class="jumbotron">
-    <img alt="Embedded Image" class="center" style="display: block;margin-left: auto;margin-right: auto;" src="/images/logo.png" />
-    <h3>Time for Javascript</h3>
-    <p>Comment changes do not require approval for push on CAP. Subscribe to our mailing list below</p>
-    <div class="input-group">
-      <input type="email" id="sub-email" required onsubmit="subscribe();" class="form-control" placeholder="enter email...">
-      <span class="input-group-btn">
-            <button class="btn btn-default" id="sub-email-btn" onclick="subscribe();" type="button">Subscribe</button>
-            </span>
+	<body>
+    
+    <!--<div id="pageloader">   
+        <div class="loader-item">
+          <img src="images/loader-dark.gif" alt='loader' />
+        </div>
+    </div>-->
+    
+    <!-- Header -->
+    <header id="header">
+    	<!-- Top Bar -->
+        <section id="top-bar">&nbsp;</section>
+        <!-- Top Bar End -->
+        
+        <!-- Logo -->
+        <div class="container">
+        	<div class="row">
+                <div class="col-md-12">
+                	<div class="text-center">
+                    	<a href="#" class="logo scroll-link" data-id="home"><img src="images/logo.svg" alt="Mannat Logo"></a>
+                        <h1>Code&Push for Node.js</h1>
+                  	</div>
+                </div>
+            </div>
+        </div>
+        <!-- Logo End -->
+        
+        <!-- Navigation -->        
+        <div class="navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                  <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="main-nav" class="collapse navbar-collapse">
+                  	<ul class="nav navbar-nav">
+               			<li class="home"><a href="#" class="selected scroll-link" data-id="home">Home</a></li>
+                        <li><a href="#" class="scroll-link" data-id="features">Features</a></li>
+                    	<li><a href="#" class="scroll-link" data-id="about">About Us</a></li>                    	
+                    	<li><a href="#" class="scroll-link" data-id="gallery">Our Customers</a></li>
+                    	<li><a href="#" class="scroll-link" data-id="pricing">Pricing</a></li>
+                    	<li><a href="#" class="scroll-link" data-id="contact">Contact Us</a></li>
+                  	</ul>
+                </div><!--/.nav-collapse -->
+            </div>
+    	</div>
+        <!-- Navigation End -->
+    </header>
+    <!-- Header End -->
+    
+    <div class="clearfix"></div>
+    <!-- Slider -->
+    <section id="home" class="slider-bg">
+    	<div class="page-slider-wrap">
+            <div id="page-slider" >
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+    
+                        <!-- MAIN IMAGE -->
+                        <img src="images/slider/slider_bg.png"  alt="slide1"  data-bgfit="scroll" data-bgposition="top center" data-bgrepeat="no-repeat">
+    
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title customin customout"
+                            data-x="100"
+                            data-y="200"
+                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-speed="1000"
+                            data-start="500"
+                            data-easing="Back.easeInOut"
+                            data-endspeed="300"
+                            style="color:#fff">Focus on business <br>We will manage your Node.js infrastructure
+                        </div>
+    
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption slider-sub-title sfl"
+                            data-x="600"
+                            data-y="15"
+                            data-speed="1000"
+                            data-start="700"
+                            data-easing="Back.easeInOut"
+                            data-endspeed="300"
+    
+                            style="color:#fff"><img src="images/slider/isometric-iphone.png" alt="">
+                        </div>
+                        
+                        <div class="tp-caption slider-sub-title sfl"
+                            data-x="100"
+                            data-y="350"
+                            data-speed="1000"
+                            data-start="900"
+                            data-easing="Back.easeInOut"
+                            data-endspeed="300"
+    
+                            style="color:#fff"><a class="btn black scroll-link" href="#">GET STARTED</a>
+                        </div>
+                    </li>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1000" >
+    
+                        <!-- MAIN IMAGE -->
+                        <img src="images/slider/slider_bg.png"  alt="slide1"  data-bgfit="scroll" data-bgposition="top center" data-bgrepeat="no-repeat">
+    
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title text-center sft"
+                            data-x="center"
+                            data-y="40"
+                            data-speed="1000"
+                            data-start="500"
+                            data-easing="Power1.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn"
+                            data-captionhidden="off"
+                            style="color:#fff">Deploy updates to production in milliseconds
+                        </div>
+    
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption slider-sub-title text-center sfl"
+                            data-x="center"
+                            data-y="150"
+                            data-speed="1000"
+                            data-start="600"
+                            data-easing="Power1.easeOut"
+                            data-endspeed="300"
+                            data-endeasing="Power1.easeIn"
+                            data-captionhidden="off"
+                            style="color:#fff"><img src="images/slider/isometric-iphone.png" alt="">
+                        </div>
+                    </li>
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+    
+                        <!-- MAIN IMAGE -->
+                        <img src="images/slider/slider_bg.png"  alt="slide1"  data-bgfit="scroll" data-bgposition="top center" data-bgrepeat="no-repeat">
+    
+                        <!-- LAYER NR. 1 -->
+                         <div class="tp-caption slider-title text-right customin"
+                            data-x="center"
+                            data-y="40"
+                            data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-speed="500"
+                            data-start="500"
+                            data-easing="Power3.easeInOut"
+                            data-endspeed="300"
+                            style="color:#fff">Scalability is not a problem for us
+                        </div>
+    
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption slider-sub-title text-center sfl"
+                            data-x="center"
+                            data-y="160"
+                            data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;rotationZ:0;scaleX:1;scaleY:1;skewX:0;skewY:0;opacity:0;transformPerspective:200;transformOrigin:50% 0%;"
+                            data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                            data-speed="1500"
+                            data-start="500"
+                            data-easing="Back.easeInOut"
+                            data-endspeed="300"    
+                            style="color:#fff"><img src="images/slider/isometric-iphone.png" alt="">
+                        </div>
+                    </li>
+                </ul>
+                <div class="tp-bannertimer tp-bottom"></div>
+            </div>
+        </div>
+        
+        <div class="clearfix">&nbsp;</div>
+        <div class="container">
+        	<div class="text-center row">
+            	<div class="col-md-12 welcome-note">
+                    <h4>Want to know more?</h4>
+                    <a href="#" class="btn orange scroll-link" data-id="portoflio">View Customers</a> <a href="#" class="btn black scroll-link" data-id="contact">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Slider End -->
+    
+    <!-- Features -->
+    <section id="features" class="content">
+    	<div class="container">
+        	<div class="row">
+            	<!--Features Page-->
+            	<div class="col-md-12 text-center">
+                	<!--Main Heading-->
+                	<h2 class="page-head">Features</h2>
+                    <h4>Build to scale</h4>
+                    <!--Main Heading End-->
+                    <div class="clearfix">&nbsp;</div>
+                    
+                </div>
+                
+                <!--Feature Services-->
+                <div class="col-sm-4">
+                    <div class="col-sm-12 animated" data-animation="flipInY" data-animation-delay="100">
+                        <div class="white-wrap service-wrap">
+                            <div class="service-icon">
+                                <i class="fa fa-upload fa-2x"></i>
+                            </div>
+                            <h3>Real-time Deployments</h3>
+                            <p>Hot updates can be deployed in milliseconds.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 animated" data-animation="flipInY" data-animation-delay="300">
+                        <div class="white-wrap service-wrap">
+                            <div class="service-icon">
+                                <i class="fa fa-gear fa-2x"></i>
+                            </div>
+                            <h3>Cloud Scalability</h3>
+                            <p>Code and Push is built to grow with demand. You only pay for what you use.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 pad-top-20">
+                	<img src="images/slider/isometric-iphone.png" alt="">
+                </div>
+                <div class="col-sm-4">
+                    <div class="col-sm-12 animated" data-animation="flipInY" data-animation-delay="200">
+                        <div class="white-wrap service-wrap">
+                            <div class="service-icon">
+                                <i class="fa fa-level-up fa-2x"></i>
+                            </div>
+                            <h3>Cross Platform Developer Tools</h3>
+                            <p>SDKs provided make it easy to migrate existing code bases to Code&Push standard apis.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 animated" data-animation="flipInY" data-animation-delay="400">
+                        <div class="white-wrap service-wrap">
+                            <div class="service-icon">
+                                <i class="fa fa-umbrella fa-2x"></i>
+                            </div>
+                            <h3>Cut Costs</h3>
+                            <p>DevOps budgets are expensive and critical, but you can cut costs by 100% because we only charge your infrastructure usage.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--Feature Services End-->
+                <div class="clearfix"></div>
+                <!--Feature Call To Action-->
+                <div class="col-md-12 col-lg-12">
+                	<div class="call-action text-center">
+                    	<p>Like Our Service ! Have a project in mind or want to say hello</p> 
+                        <div><a href="#" class="btn orange">Get A Quote</a> <a href="#" class="btn white">Contact Us</a></div>
+                    </div>
+                </div>
+                <!--Feature Call To Action End-->
+                
+                <div class="col-md-12 text-center animated" data-animation="fadeIn" data-animation-delay="400">
+                	<!--Icon Heading-->
+                    <div class="icon-head">
+                    	<i class="fa fa-users"></i>
+                    </div>
+                    <!--Icon Heading End-->
+                    
+                    <!--Sub Heading-->
+                    <h3>Our clients</h3>
+                    <h4>See Who has contact us and used our featured services <br>
+Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</h4>
+                    <!--Sub Heading End-->
+                </div>
+                
+                <!--Client Slider-->
+                <div class="col-md-12">
+                	<div class="client-slider">
+                    	<div id="client-slider" class="owl-carousel owl-theme">
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="100">
+                                <img class="lazyOwl" data-src="images/client/client1.png" alt="Our Portfolio">
+                            </div>
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="200">
+                                <img class="lazyOwl" data-src="images/client/client2.png" alt="Our Portfolio">
+                            </div>
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="300">
+                                <img class="lazyOwl" data-src="images/client/client3.png" alt="Our Portfolio">
+                            </div>
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="400">
+                                <img class="lazyOwl" data-src="images/client/client4.png" alt="Our Portfolio">
+                            </div>
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="500">
+                                <img class="lazyOwl" data-src="images/client/client1.png" alt="Our Portfolio">
+                            </div>
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="600">
+                                <img class="lazyOwl" data-src="images/client/client2.png" alt="Our Portfolio">
+                            </div>
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="700">
+                                <img class="lazyOwl" data-src="images/client/client3.png" alt="Our Portfolio">
+                            </div>
+                            <div class="item animated" data-animation="flipInY" data-animation-delay="800">
+                                <img class="lazyOwl" data-src="images/client/client4.png" alt="Our Portfolio">
+                            </div>
+                        </div>
+                    </div>
+                </div>	
+                <!--Client Slider End-->
+                
+                <!--Services Page End-->
+            </div>
+        </div>
+        
+        <!--Page Bottom Spacer-->
+        <div class="spacer">&nbsp;</div>
+        <!--Page Bottom Spacer End-->
+    </section>    
+    <!-- Features End -->
+    
+    <!-- About Us -->
+    <section id="about" class="content">
+    	<div class="container">
+        	<div class="row">
+            	<!--About Page-->
+            	<div class="col-md-12 text-center animated" data-animation="flipInX" data-animation-delay="000">
+                	<!--Main Heading-->
+                	<h2 class="page-head">About us</h2>
+                    <h4>We specialize in building tools that make software development fun.</h4>
+                    <!--Main Heading End-->
+                    
+                    <!--Icon Heading-->
+                    <div class="icon-head">
+                    	<i class="fa fa-user"></i>
+                    </div>
+                    <!--Icon Heading End-->
+                    
+                    <!--Sub Heading-->
+                    <h3>Meet our team</h3>
+                    <h4>This is brand ambassador of mannat studio <br>Each person plays a important role in there respective field of work !</h4>
+                    <!--Sub Heading End-->
+                </div>
+                <!--About Page End-->
+                
+                <!--Team Members-->
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="300">
+                	<div class="white-wrap team-wrap">
+                    	<img src="images/team/profile4.jpg" alt="Our Team">
+                        <h3>John Doe <span>Creative Director</span></h3>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="400">
+                	<div class="white-wrap team-wrap">
+                    	<img src="images/team/profile3.jpg" alt="Our Team">
+                        <h3>John Doe <span>Creative Director</span></h3>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="500">
+                	<div class="white-wrap team-wrap">
+                    	<img src="images/team/profile2.jpg" alt="Our Team">
+                        <h3>John Doe <span>Creative Director</span></h3>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="600">
+                	<div class="white-wrap team-wrap">
+                    	<img src="images/team/profile1.jpg" alt="Our Team">
+                        <h3>John Doe <span>Creative Director</span></h3>
+                        <div class="social-icons">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--Team Members End-->
+                <div class="clearfix"></div>
+                <!--Our Skills-->
+                <div class="col-md-12 text-center animated" data-animation="flipInX" data-animation-delay="100">
+                	<!--Icon Heading-->
+                    <div class="icon-head">
+                    	<i class="fa fa-code"></i>
+                    </div>
+                    <!--Icon Heading End-->
+                    
+                    <!--Sub Heading-->
+                    <h3>Our Skills</h3>
+                    <h4>This is our graph which tell's you about our level of expertise<br> Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</h4>
+                    <!--Sub Heading End-->
+                </div>
+                <div class="col-md-12 animated" data-animation="fadeIn" data-animation-delay="100">
+                    <div class="skillbar-wrap">
+                    	<div class="col-md-6">
+                        	<div class="clearfix">
+                            	<span class="skillbar-title pull-left">Photoshop</span>
+                                <span class="skill-bar-percent pull-right">90%</span>
+                          	</div>
+                            <div class="skillbar" data-percent="90%">
+                                <div class="skillbar-bar"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        	<div class="clearfix">
+                            	<span class="skillbar-title pull-left">WordPress</span>
+                                <span class="skill-bar-percent pull-right">85%</span>
+                          	</div>
+                            <div class="skillbar" data-percent="85%">
+                                <div class="skillbar-bar"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        	<div class="clearfix">
+                            	<span class="skillbar-title pull-left">HTML5 &amp; CSS</span>
+                                <span class="skill-bar-percent pull-right">95%</span>
+                          	</div>
+                            <div class="skillbar" data-percent="95%">
+                                <div class="skillbar-bar"></div>
+                            </div>
+                       	</div>
+                        <div class="col-md-6">
+                        	<div class="clearfix">
+                            	<span class="skillbar-title pull-left">PHP</span>
+                                <span class="skill-bar-percent pull-right">70%</span>
+                          	</div>
+                            <div class="skillbar " data-percent="70%">
+                                <div class="skillbar-bar"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                        	<div class="clearfix">
+                            	<span class="skillbar-title pull-left">Illustrator</span>
+                                <span class="skill-bar-percent pull-right">75%</span>
+                          	</div>
+                            <div class="skillbar" data-percent="75%">                                
+                                <div class="skillbar-bar"></div>                               
+                            </div>           
+                        </div>
+                        <div class="col-md-6">
+                        	<div class="clearfix">
+                            	<span class="skillbar-title pull-left">Shopify</span>
+                                <span class="skill-bar-percent pull-right">90%</span>
+                          	</div>
+                            <div class="skillbar" data-percent="90%">
+                                <div class="skillbar-bar"></div>
+                            </div>           
+                        </div>             
+                    </div>
+                </div>
+                
+                <!--Our Skills End-->
+                
+                <!--Client Testimonials-->
+                <div class="col-md-12 text-center animated" data-animation="flipInX" data-animation-delay="100">
+                	<!--Icon Heading-->
+                    <div class="icon-head">
+                    	<i class="fa fa-quote-left"></i>
+                    </div>
+                    <!--Icon Heading End-->
+                    
+                    <!--Sub Heading-->
+                    <h3>Client Testimonials</h3>
+                    <h4>What our lover say's about there projects we done so far, <br>Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</h4>
+                    <!--Sub Heading End-->
+                    
+                    <div class="testimonial-slider">
+                    	<div id="testimonial-slider" class="owl-carousel owl-theme">
+                            <div class="item">
+                                <div class="text-center">
+                                	<img src="images/team/profile4.jpg" alt="">
+                                  	<h4>Jeff Fashkin</h4>
+                                    <p>Praesent pellentesque diam vitae nibh aliquam faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Phasellus placerat, nisl vitae vulputate bibendum.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                               	<div class="text-center">
+                                	<img src="images/team/profile3.jpg" alt="">
+                                  	<h4>Jeff Fashkin</h4>
+                                    <p>Praesent pellentesque diam vitae nibh aliquam faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Phasellus placerat, nisl vitae vulputate bibendum.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="text-center">
+                                	<img src="images/team/profile2.jpg" alt="">
+                                  	<h4>Jeff Fashkin</h4>
+                                    <p>Praesent pellentesque diam vitae nibh aliquam faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Phasellus placerat, nisl vitae vulputate bibendum.</p>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="text-center">
+                                	<img src="images/team/profile1.jpg" alt="">
+                                  	<h4>Jeff Fashkin</h4>
+                                    <p>Praesent pellentesque diam vitae nibh aliquam faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla facilisi. Phasellus placerat, nisl vitae vulputate bibendum.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Client Testimonials End-->
+            </div>
+        </div>
+        
+        <!--Page Bottom Spacer-->
+        <div class="spacer">&nbsp;</div>
+        <!--Page Bottom Spacer End-->
+    </section>    
+    <!-- About Us End -->
+    
+    <!-- Gallery -->
+    <section id="gallery" class="content">
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-12 text-center">
+                	<!--Main Heading-->
+                	<h2 class="page-head">Screenshot Gallery</h2>
+                    <h4>This is the best showcase of our recent projects done <br>Have a closer look to all our case studies</h4>
+                    <!--Main Heading End-->
+                </div>
+            </div>
+        </div>
+        
+        <section id="portfolio-grid">
+        	<div class="container">
+                <div class="row">
+                	<div class="wrapper wf">
+                	<div class="col-md-12">
+                        <ul class="unstyled" id="filters">
+                            <li class="filter" data-filter="all" data-role="button"><a href="javascript:void(0)">All</a></li>
+                            <li class="filter" data-filter="architect" data-role="button"><a href="javascript:void(0)">Category 1</a></li>
+                            <li class="filter" data-filter="landscape" data-role="button"><a href="javascript:void(0)">Category 2</a></li>
+                            <li class="filter" data-filter="musical" data-role="button"><a href="javascript:void(0)">Category 3</a></li>
+                            <li class="filter" data-filter="nature" data-role="button"><a href="javascript:void(0)">Category 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                    <ul id="Grid" class="unstyled">
+                        <li class="mix col-sm-3 musical" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_1.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_1.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mix col-sm-3 nature" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_2.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_2.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mix col-sm-3 landscape" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_4.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_4.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mix col-sm-3 landscape" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_3.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_3.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mix col-sm-3 nature" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_11.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_11.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mix col-sm-3 architect" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_5.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_5.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mix col-sm-3 architect" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_1.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_7.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mix col-sm-3 landscape" data-sort="data-name">
+                            <div class="white-wrap">
+                                <div class="image-holder">
+                                    <a href="images/portfolio/img_12.jpg" class="fancybox" data-fancybox-group="gallery" title="Lorem ipsum dolor sit amet">
+                                        <span class="item-on-hover"><span class="hover-image"><i class="fa fa-search fa-2x"></i></span></span>
+                                        <img src="images/portfolio/img_12.jpg" alt="Our Portfolio">
+                                    </a>
+                                </div>
+                                <div class="text-holder">
+                                    <i class="fa fa-picture-o"></i>
+                                    <h3>Title Heading</h3>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                </div>
+                            </div>
+                        </li>
+                        <div class="clearfix"></div>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+		
+		<!-- END DEMO WRAPPER --> 
+        <!--Page Bottom Spacer-->
+        <div class="spacer">&nbsp;</div>
+        <!--Page Bottom Spacer End-->
+    </section>    
+    <!-- Gallery End -->
+    
+    <!-- Our pricing -->
+    <section id="pricing" class="content">
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-12 text-center">
+                	<!--Main Heading-->
+                	<h2 class="page-head">Our Pricing</h2>
+                    <h4>What we think we share it on our blog<br> Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</h4>
+                    <!--Main Heading End-->
+                </div>
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="100">
+                    <div class="pricingtable">
+                        <div class="top">
+                            <h2>Basic</h2>
+                        </div>
+                        <ul>
+                            <li><strong>Full</strong> Email Support</li>
+                            <li><strong>25GB</strong> of Storage</li>
+                            <li><strong>5</strong> Domains</li>
+                            <li><strong>10</strong> Email Addresses</li>
+                        </ul>
+                        <hr>
+                        <h1><sup>$</sup>25</h1>
+                        <p>per month</p>
+                        <a class="btn orange " href="#">Sign Up</a> 
+                    </div>
+                </div>
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="200">
+                    <div class="pricingtable">
+                        <div class="top">
+                            <h2>Advacned</h2>
+                        </div>
+                        <ul>
+                            <li><strong>Full</strong> Email Support</li>
+                            <li><strong>25GB</strong> of Storage</li>
+                            <li><strong>5</strong> Domains</li>
+                            <li><strong>10</strong> Email Addresses</li>
+                        </ul>
+                        <hr>
+                        <h1><sup>$</sup>25</h1>
+                        <p>per month</p>
+                        <a class="btn orange " href="#">Sign Up</a> 
+                    </div>
+                </div>
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="300">
+                    <div class="pricingtable">
+                        <div class="top">
+                        <h2>Pro</h2>
+                        </div>
+                        <ul>
+                        <li><strong>Full</strong> Email Support</li>
+                        <li><strong>50GB</strong> of Storage</li>
+                        <li><strong>10</strong> Domains</li>
+                        <li><strong>20</strong> Email Addresses</li>
+                        </ul>
+                        <hr>
+                        <h1><sup>$</sup>49</h1>
+                        <p>per month</p>
+                        <a class="btn orange " href="#">Sign Up</a> 
+                    </div>
+                </div>
+                <div class="col-sm-3 animated" data-animation="flipInY" data-animation-delay="400">
+                    <div class="pricingtable">
+                        <div class="top">
+                        <h2>Premium</h2>
+                        </div>
+                        <ul>
+                        <li><strong>Full</strong> Email Support</li>
+                        <li><strong>Unlimited</strong> Storage</li>
+                        <li><strong>Unlimited</strong> Domains</li>
+                        <li><strong>50</strong> Email Addresses</li>
+                        </ul>
+                        <hr>
+                        <h1><sup>$</sup>79</h1>
+                        <p>per month</p>
+                        <a class="btn orange " href="#">Sign Up</a> 
+                    </div>
+                </div>
+                
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        
+        <!--Page Bottom Spacer-->
+        <div class="spacer">&nbsp;</div>
+        <!--Page Bottom Spacer End-->
+    </section>    
+    <!-- Our pricing End -->
+    
+    <!-- Contact Us -->
+    <section id="contact" class="content last">
+    	<div class="container">
+        	<div class="row">
+            	<div class="col-md-12 text-center">
+                	<!--Main Heading-->
+                	<h2 class="page-head">contact us</h2>
+                    <h4>Want to say hello or visit our office <br>Artichoke salad bamboo shoot black-eyed pea brussels sprout garlic kohlrabi.</h4>
+                    <!--Main Heading End-->
+                </div>
+            </div>
+        </div>
+        
+        <section id="map-holder">
+        	<!--<div id="map_extended">
+                <p>This will be replaced with the Google Map.</p>
+            </div>-->
+        </section>
+        
+        <div class="parallax-area parallax-image" data-stellar-background-ratio="0.1" id="contacr-form">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-sm-4 animated" data-animation="flipInY" data-animation-delay="100">
+                    	<div class="white-wrap">
+                        	<div class="text-holder">
+                                <i class="fa fa-map-marker"></i>                                
+                                <h3>Address</h3>
+                                <div>Envato Pty Ltd, 13/2 Elizabeth <br>St Melbourne VIC 3000, Australia</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 animated" data-animation="flipInY" data-animation-delay="200">
+                    	<div class="white-wrap">
+                        	<div class="text-holder">
+                                <i class="fa fa-phone"></i>                                
+                                <h3>call us</h3>
+                                <div>+1 (408) 786 - 5117 <br>+1 (408) 786 - 5227</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 animated" data-animation="flipInY" data-animation-delay="300">
+                    	<div class="white-wrap">
+                        	<div class="text-holder">
+                                <i class="fa fa-envelope"></i>                                
+                                <h3>Email  us</h3>
+                                <div><a href="#">info@mannatstudio.com</a><br> <a href="#">support@mannatstudio.com</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="container">
+            	<div class="row">
+                	<div class="form-div animated" data-animation="bounceInUp" data-animation-delay="400">
+                    	<div class="col-sm-12">
+                        	<div id="sucessmessage"> </div>
+                        </div>
+                        <form id="contact_form" method="post" action="#" />
+                            <div class="col-sm-4">
+                                <input type="text" placeholder="Full Name" name="name" id="name" class="form-control">
+                            </div>  
+                            <div class="col-sm-4">
+                                <input type="text" name="email" placeholder="Email Address" id="email" class="form-control">
+                            </div>                              
+                            <div class="col-sm-4">
+                                <input type="text" name="phone" placeholder="Phone Number" id="phone" class="form-control">
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-sm-12">
+                                <textarea name="comment" id="comment" placeholder="Your message" class="form-control" rows="3"></textarea>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="submit" class="btn btn-default" value="Submit" id="submit" />
+                            </div>
+                            <div class="col-sm-6 text-right">
+                                <h5>We will respond your message within 24 hours of working day.</h5>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+        	<div class="container">
+            	<div class="text-center">
+                	<div class="social-icons animated" data-animation="swing" data-animation-delay="200">
+                    	<ul>
+                        	<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-windows"></i></a></li>
+                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright text-center animated" data-animation="fadIn" data-animation-delay="300">
+            	© 2017 <span>Code&Push Technologies</span> All rights reserved. <a href="#">Mannat studio</a>
+            </div>
+        </footer>
+    </section>    
+    <!-- Contact Us End -->
+    
+    <div id="back-top">
+        <a  class="scroll-link" data-id="home" href="#">
+            <i class="fa fa-angle-up"></i>
+        </a>
     </div>
-  </div>
-
-</div>
-<!--<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular.js'></script>-->
-<!--<script src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.4/angular-route.js'></script>-->
-<script src='/app.js'></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
-<script>
-
-    $("#sub-email").keyup(function(event){
-        if(event.keyCode == 13){
-            $("#sub-email-btn").click();
-        }
-    });
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyAnAlcNguBpgZtuy3k_KYcc-1avsLmdsY4",
-        authDomain: "web-domain-sellers.firebaseapp.com",
-        databaseURL: "https://web-domain-sellers.firebaseio.com",
-        storageBucket: "web-domain-sellers.appspot.com",
-        messagingSenderId: "755621200065"
-    };
-    firebase.initializeApp(config);
-
-
-    function subscribe() {
-        var val = document.getElementById('sub-email').value.trim();
-        console.log("subscribed!", val);
-        if(val){
-            firebase.database().ref('subscriptions').push(val, function (error) {
-                if(error){
-                    console.error(error);
-                    $('#subSuccess').hide();
-                }else{
-                    console.log("success");
-                    $('#subSuccess').fadeIn();
-                    document.getElementById('sub-email').value = '';
-                }
-            })
-        }
-    }
-</script>
-
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-72864928-3', 'auto');
-    ga('send', 'pageview');
-
-</script>
-</body>
+    
+    <!-- jQuery & Helper library -->
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/jquery.appear.min.js"></script>    
+    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/modernizr-latest.js"></script>
+    <script type='text/javascript' src="js/jquery.fitvids.js"></script>
+	<script type="text/javascript" src="js/retina.js"></script>
+	<script type="text/javascript" src="js/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <script type='text/javascript' src="js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+    <script type="text/javascript" src="js/masonry.pkgd.min.js"></script>
+    <script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+    <script type="text/javascript" src="js/stellar.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/jquery.themepunch.plugins.min.js"></script>
+	<script type="text/javascript" src="js/jquery.themepunch.revolution.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+	<script type="text/javascript" src="js/jquery.gmap.min.js"></script>
+    
+    <!--scripts for current page -->
+    <script type="text/javascript" src="js/theme-custom.js"></script>
+	</body>
 </html>
